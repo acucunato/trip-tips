@@ -1,4 +1,4 @@
-# triptips# Trip Tips
+# Trip Tips
 
 A Full-Stack Web Application
 
@@ -28,12 +28,12 @@ Trip Tips is an application that assists the user in creating, viewing, and revi
 
 ## Log In or Sign Up:
 
-![Signup](public/img/landingpage:signin.mp4 "signup")
+![Signup](public/img/signin.gif "signup")
 
 ## Create your Own Itinerary & Search for Events:
 
-![create](public/img/createitinerary.mp4 "create")
-![create](public/img/eventappend.mp4 "create")
+![create](public/img/createitin.gif"create")
+![event](public/img/eventappend.gif "eventappend")
 
 ## Tech used
 
