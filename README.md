@@ -16,7 +16,7 @@ Trip Tips is an application that assists the user in creating, viewing, and revi
 
 ## Utilizing the App
 
-- Experience the deployed app on Heroku: [Here](https://rocky-island-15592.herokuapp.com/ "Here")
+- Experience the deployed app on Heroku: [Here](https://grouptriptips.herokuapp.com/ "Here")
 - View the original repository: [Here](https://github.com/Didier-D-crypto/Project-2-Full-Stack-App "Here")
 - User is routed to "Login" page, where the user can "Login" or click to "Sign Up"
 - After the user signs up, they can view exisiting itineraries on the main page. If the user has used this itinerary the user can input a review for that particular city to "Post a Review" to our page so other users can view.
