@@ -32,7 +32,7 @@ Trip Tips is an application that assists the user in creating, viewing, and revi
 
 ## Create your Own Itinerary & Search for Events:
 
-![create](public/img/createitin.gif"create")
+![create](public/img/createitin.gif "create")
 ![event](public/img/eventappend.gif "eventappend")
 
 ## Tech used
