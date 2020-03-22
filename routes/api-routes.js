@@ -55,7 +55,7 @@ module.exports = function(app) {
   });
 
   app.post("/send", (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -67,27 +67,27 @@ module.exports = function(app) {
     const start = req.body.start_date;
 
     // console.log("_____", mailOptions);
-  transporter.sendMail({
-    from: "malabobby223@gmail.com", // sender address
-    to: "malabobby223@gmail.com", // list of receivers
-    subject: "Your Itinerary",
-    html: 
-    
-    // ` <p>You have a new contact request</p>
-    // //        <h3>Contact Details</h3>
-    // //        <ul>  
-    // //          <li>Start Date: ${req.body.start_date}</li>
-    // //          <li>End Date: ${req.body.end_date}</li>
-    // //          <li>City: ${req.body.city}</li>
-    // //          <li>Food: ${req.body.food}</li>
-    // //          <li>Activities: ${req.body.activities}</li>
-    // //          <li>Nighttime: ${req.body.nighttime}</li>
-    // //          <li>Review: ${req.body.reviews}</li>
-    // //        </ul>
-    // //        <h3>Message</h3>
-    // //        <p>a yo</p>;`
+    transporter.sendMail(
+      {
+        from: "malabobby223@gmail.com", // sender address
+        to: "malabobby223@gmail.com", // list of receivers
+        subject: "Your Itinerary",
+        html:
+          // ` <p>You have a new contact request</p>
+          // //        <h3>Contact Details</h3>
+          // //        <ul>
+          // //          <li>Start Date: ${req.body.start_date}</li>
+          // //          <li>End Date: ${req.body.end_date}</li>
+          // //          <li>City: ${req.body.city}</li>
+          // //          <li>Food: ${req.body.food}</li>
+          // //          <li>Activities: ${req.body.activities}</li>
+          // //          <li>Nighttime: ${req.body.nighttime}</li>
+          // //          <li>Review: ${req.body.reviews}</li>
+          // //        </ul>
+          // //        <h3>Message</h3>
+          // //        <p>a yo</p>;`
 
-`  <head>
+          `  <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -100,7 +100,6 @@ module.exports = function(app) {
   href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Saira&display=swap"
   rel="stylesheet"
 />
-
 <link
   href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald"
   rel="stylesheet"
@@ -151,22 +150,19 @@ module.exports = function(app) {
     </article>
   </div>
 </div>`
-
-
-
-
-    
-  }, function (err) {
-      if (err) {
-          console.log(err)
-      } else {
-        console.log("--------------");
-        console.log("--------------");
-        console.log("--------------");
-        console.log("--------------");
+      },
+      function(err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("--------------");
+          console.log("--------------");
+          console.log("--------------");
+          console.log("--------------");
+        }
       }
+    );
   });
-  })
 
   /* Added 3/10/19 */
 
@@ -182,8 +178,8 @@ module.exports = function(app) {
     db.User.findOne({
       where: {
         id: req.params.id
-      },
-      include: [db.Itineraries]
+      }
+      //include: [db.Itineraries]
     }).then(dbUser => {
       res.json(dbUser);
     });
@@ -218,8 +214,8 @@ module.exports = function(app) {
       query.userId = req.query.user_id;
     }
     db.Itineraries.findAll({
-      where: query,
-      include: [db.User]
+      where: query
+      // include: [db.User]
     }).then(dbItin => {
       res.json(dbItin);
     });
@@ -231,8 +227,8 @@ module.exports = function(app) {
     db.Itineraries.findOne({
       where: {
         id: req.params.id
-      },
-      include: [db.User]
+      }
+      //  include: [db.User]
     }).then(dbItin => {
       res.json(dbItin);
     });
@@ -247,28 +243,26 @@ module.exports = function(app) {
   });
 
   // DELETE route for deleting Itineraries
-  // app.delete("api/itineraries/:id", (req, res) => {
-  //   db.Itineraries.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(dbItin => {
-  //     res.json(dbItin);
-  //   });
-  // });
+  app.delete("/api/itineraries/:id", (req, res) => {
+    db.Itineraries.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbItin => {
+      res.json(dbItin);
+    });
+  });
 
   // PUT route for updating Itineraries
-  // app.put("api/itineraries", (req, res) => {
-  //   db.Itineraries.update(
-  //     req.body,
-  //     {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     }).then(dbItin => {
-  //       res.json(dbItin)
-  //     });
-  // });
+  app.put("api/itineraries", (req, res) => {
+    db.Itineraries.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(dbItin => {
+      res.json(dbItin);
+    });
+  });
 
   /* Cities API-Routes */
 
@@ -282,8 +276,8 @@ module.exports = function(app) {
       query.userId = req.query.user_id;
     }
     db.Cities.findAll({
-      where: query,
-      include: [db.Itineraries]
+      where: query
+      //  include: [db.Itineraries]
     }).then(dbItin => {
       res.json(dbItin);
     });
@@ -294,8 +288,8 @@ module.exports = function(app) {
     db.Cities.findOne({
       where: {
         id: req.params.id
-      },
-      include: [db.Itineraries]
+      }
+      // include: [db.Itineraries]
     }).then(dbItin => {
       res.json(dbItin);
     });
